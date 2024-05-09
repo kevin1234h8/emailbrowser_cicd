@@ -1,0 +1,47 @@
+.load-container {
+  border: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  overflow: hidden;
+  box-sizing: border-box;
+  top: 0;
+  left: 0;
+  margin: auto;
+  z-index: 1040;
+}
+
+.outer-border {
+  margin: -44px 0 0 -44px;
+  top: 50%;
+  left: 50%;
+  position: absolute;
+  border: 10px solid #fff;
+  border-radius: 100%;
+  width: 87px;
+  height: 87px;
+  background: radial-gradient(circle, transparent 14px, #fff 5px);
+  background: -moz-radial-gradient(circle, transparent 14px, #fff 5px);
+  z-index: 999;
+}
+
+.loader1 {
+  margin: auto;
+  position: relative;
+  border: 12px solid #dbf1fe;
+  border-left: 12px solid #0072aa;
+  transform: translateZ(0);
+  animation: load8 1.1s infinite linear;
+  width: 67px;
+  height: 67px;
+  border-radius: 100%;
+  /* transform: rotate(360deg); */
+}
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}/*# sourceMappingURL=loaderstyle.css.map */

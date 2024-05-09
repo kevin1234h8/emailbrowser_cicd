@@ -1,0 +1,34 @@
+.root {
+  width: 90%;
+  border-bottom: solid 1px #ddd;
+  border-left: solid 1px #ddd;
+  border-right: solid 1px #ddd;
+  border-bottom-left-radius: 13px;
+  border-bottom-right-radius: 13px;
+  text-align: left;
+  padding-left: 10px;
+  margin: auto;
+}
+
+// .cell_contents {
+//   display: block;
+//   color: #fff;
+//   float: left;
+// }
+.table thead th {
+  background: inherit;
+  font: inherit;
+  font-size: smaller;
+}
+.table tbody tr:hover {
+  background: #bbceed;
+}
+td {
+  font-size: smaller;
+}
+.attachment {
+  margin: 5px;
+  color: #4f8dc4;
+  //   word-wrap: break-word;
+  //   word-break: break-all;
+}
