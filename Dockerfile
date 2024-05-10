@@ -9,8 +9,6 @@ RUN apk --no-cache add python3 make g++
 
 RUN npm install --force
 
-COPY . .
-
 RUN npm run build
 
 FROM nginx:1.19.0
