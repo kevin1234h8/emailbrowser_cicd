@@ -15,7 +15,7 @@ jobs:
         run: npm install --force
 
       - name: Docker Login
-        run: docker login -u your-docker-username -p dckr_pat_6fnV641cyHBNeUkd_vCtJ5pmWTQ
+        run: docker login  -u kevinswiftxco -p dckr_pat_6fnV641cyHBNeUkd_vCtJ5pmWTQ
 
       - name: Build and Push Docker Image
         uses: mr-smithers-excellent/docker-build-push@v4
