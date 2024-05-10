@@ -15,4 +15,4 @@ jobs:
         run: npm install --force
 
       - name: Build
-        run: set \"GENERATE_SOURCEMAP=true\" && react-scripts --max_old_space_size=8192 build  && workbox generateSW
+        run: npm run build

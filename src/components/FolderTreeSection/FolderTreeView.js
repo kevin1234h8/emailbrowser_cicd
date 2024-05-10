@@ -7,8 +7,6 @@ import FolderTreeItem from "./FolderTreeItem";
 import AGOApi, { getOTCSTicket } from "../../api/AGOApi";
 import _, { result } from "lodash";
 import { TreeView } from "@mui/x-tree-view/TreeView";
-// import { withRouter } from "react-router-dom";
-import { withRouter } from "../WithRouter";
 import axios from "axios";
 import recentAccessedIcon from "../../components/assets/title_recentlyaccessed.svg";
 import { TreeItem, useTreeItem } from "@mui/x-tree-view/TreeItem";
@@ -938,5 +936,4 @@ FolderTreeView.propTypes = {
   FolderNodeID: PropTypes.number.isRequired,
   FolderNodeName: PropTypes.string.isRequired,
 };
-// export default withRouter(FolderTreeView);
 export default FolderTreeView;

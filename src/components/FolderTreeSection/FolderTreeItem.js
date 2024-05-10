@@ -6,8 +6,6 @@ import { FcFolder } from "react-icons/fc";
 import _ from "lodash";
 import LinearProgress from "@material-ui/core/LinearProgress";
 import { TreeItem } from "@mui/x-tree-view/TreeItem";
-import { withRouter } from "../WithRouter";
-// import { withRouter } from "react-router-dom";
 
 const { Config } = require("../common/AppConfig");
 let NeedtocollapseItems = [];
@@ -624,5 +622,4 @@ FolderTreeItem.propTypes = {
   FolderNodeID: PropTypes.number.isRequired,
   FolderNodeName: PropTypes.string.isRequired,
 };
-// export default withRouter(FolderTreeItem);
 export default FolderTreeItem;
