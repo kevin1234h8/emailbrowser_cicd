@@ -17,7 +17,7 @@ jobs:
           node-version: "20"
 
       - name: Run SonarQube Scan
-        run: sonar-scanner
+        run: npm run sonar
 
       - name: Install dependencies
         run: npm install --force
