@@ -23,4 +23,4 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: push to docker
-        run: docker build -t emailbrowser-github-app.
+        run: docker build -t emailbrowser-github-app .
