@@ -8,16 +8,19 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Shallow clones should be disabled for a better relevancy of analysis
+
+      - uses: sonarsource/sonarqube-scan-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
-
-      - name: Run SonarQube Scan
-        run: npm run sonar
 
       - name: Install dependencies
         run: npm install --force
