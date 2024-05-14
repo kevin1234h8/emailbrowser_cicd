@@ -10,6 +10,6 @@ RUN npm install --force
 
 COPY . .
 
-EXPOSE 8088
+EXPOSE 3001
 
-CMD ["npm" , "start"]
+CMD ["npm","start"]

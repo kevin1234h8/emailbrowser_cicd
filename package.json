@@ -53,7 +53,7 @@
     "universal-cookie": "^7.1.0"
   },
   "scripts": {
-    "start": "set HTTPS=false&&run-p start:dev start:api",
+    "start": "react-scripts start",
     "start:dev": "react-scripts start",
     "prestart:api": "node tools/createMockDb.js",
     "start:api": "node tools/apiServer.js",
