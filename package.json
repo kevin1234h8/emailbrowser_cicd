@@ -60,7 +60,7 @@
     "build": "set \"GENERATE_SOURCEMAP=true\" && react-scripts --max_old_space_size=8192 build  && workbox generateSW",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "sonar": "node sonarqube-scanner.js"
+    "sonar": "sonar-scanner"
   },
   "eslintConfig": {
     "extends": "react-app"
