@@ -10,6 +10,6 @@ RUN npm install --force
 
 COPY . .
 
-EXPOSE 3001
+EXPOSE 3000
 
 CMD ["npm","start"]

@@ -16,6 +16,18 @@ jobs:
         with:
           node-version: "20"
 
+      - name: Run SonarQube Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: sqp_6543e389980a8a3a0a5f16dca49265242e2a95bc
+          SONAR_HOST_URL: http://localhost:9099
+        with:
+          args: >
+            -Dsonar.projectKey=Email-Browser
+            -Dsonar.sources=.
+            -Dsonar.host.url=http://localhost:9099
+            -Dsonar.login=sqp_6543e389980a8a3a0a5f16dca49265242e2a95bc
+
       - name: Install dependencies
         run: npm install --force
 
