@@ -1,7 +1,7 @@
 import scanner from "sonarqube-scanner";
 scanner(
   {
-    serverUrl: "http://localhost:3000",
+    serverUrl: "https://sonarqube.local",
     options: {
       "sonar.login": process.env.REACT_SONAR_USERNAME,
       "sonar.password": process.env.REACT_SONAR_PASSWORD,
