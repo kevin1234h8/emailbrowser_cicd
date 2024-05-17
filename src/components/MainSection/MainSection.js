@@ -12,9 +12,8 @@ import LogoutIcon from "../assets/icons/logout.svg";
 import ClearInput from "../assets/icons/formfield_clear24.svg";
 import HomeButton from "../assets/icons/home.svg";
 import Breadcrumb from "../assets/icons/breadcrumb_arrow.svg";
-// import {  useNavigate } from "react-router-dom";
-// import { withRouter, useHistory } from "react-router-dom";
-import { withRouter } from "../WithRouter";
+
+// import { withRouter } from "../withRouter";
 import { useHistory } from "../../hooks/useHistory";
 
 import { Navigate, NavLink, useNavigate, useLocation } from "react-router-dom";
@@ -2016,4 +2015,4 @@ function MainSection(props) {
 }
 
 // export default withRouter(MainSection);
-export default withRouter(MainSection);
+export default MainSection;
