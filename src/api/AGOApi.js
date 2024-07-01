@@ -13,45 +13,45 @@ const isNullOrEmpty = (str) => {
   return str === null || str === "";
 };
 
-export function getOTCSTicket() {
-  const authInfo = sessionStorage.getItem(
-    "nuc/utils/authenticators/ticket.authenticator"
-  );
-  const authJson = JSON.parse(authInfo);
-  const ticket = authJson["/otcs/cs.exe/api/v1"]
-    ? authJson["/otcs/cs.exe/api/v1"].ticket
-    : authJson["/otcs/llisapi.dll/api/v1"].ticket;
+// export function getOTCSTicket() {
+//   const authInfo = sessionStorage.getItem(
+//     "nuc/utils/authenticators/ticket.authenticator"
+//   );
+//   const authJson = JSON.parse(authInfo);
+//   const ticket = authJson["/otcs/cs.exe/api/v1"]
+//     ? authJson["/otcs/cs.exe/api/v1"].ticket
+//     : authJson["/otcs/llisapi.dll/api/v1"].ticket;
 
-  return ticket;
-}
+//   return ticket;
+// }
 
-function updateOTCSTicket(ticket) {
-  const authInfo = sessionStorage.getItem(
-    "nuc/utils/authenticators/ticket.authenticator"
-  );
-  let authJson = JSON.parse(authInfo);
+// function updateOTCSTicket(ticket) {
+//   const authInfo = sessionStorage.getItem(
+//     "nuc/utils/authenticators/ticket.authenticator"
+//   );
+//   let authJson = JSON.parse(authInfo);
 
-  if (authJson["/otcs/cs.exe/api/v1"]) {
-    authJson["/otcs/cs.exe/api/v1"].ticket = ticket;
-  }
+//   if (authJson["/otcs/cs.exe/api/v1"]) {
+//     authJson["/otcs/cs.exe/api/v1"].ticket = ticket;
+//   }
 
-  if (authJson["/otcs/llisapi.dll/api/v1"]) {
-    authJson["/otcs/llisapi.dll/api/v1"].ticket = ticket;
-  }
+//   if (authJson["/otcs/llisapi.dll/api/v1"]) {
+//     authJson["/otcs/llisapi.dll/api/v1"].ticket = ticket;
+//   }
 
-  if (authJson["/otcs/cs.exe/api/v2"]) {
-    authJson["/otcs/cs.exe/api/v2"].ticket = ticket;
-  }
+//   if (authJson["/otcs/cs.exe/api/v2"]) {
+//     authJson["/otcs/cs.exe/api/v2"].ticket = ticket;
+//   }
 
-  if (authJson["/otcs/llisapi.dll/api/v2"]) {
-    authJson["/otcs/llisapi.dll/api/v2"].ticket = ticket;
-  }
+//   if (authJson["/otcs/llisapi.dll/api/v2"]) {
+//     authJson["/otcs/llisapi.dll/api/v2"].ticket = ticket;
+//   }
 
-  sessionStorage.setItem(
-    "nuc/utils/authenticators/ticket.authenticator",
-    JSON.stringify(authJson)
-  );
-}
+//   sessionStorage.setItem(
+//     "nuc/utils/authenticators/ticket.authenticator",
+//     JSON.stringify(authJson)
+//   );
+// }
 
 function refreshOTDSTicket(otdsToken) {
   const apiClient = axios.create({
@@ -125,11 +125,11 @@ export default {
     //     return null;
     //   });
 
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
     return apiClient
       .get(url)
       .then((resp) => {
-        updateOTCSTicket(resp.headers.otcsticket);
+        // updateOTCSTicket(resp.headers.otcsticket);
         let folderInfoList = [];
 
         // console.log({ resp });
@@ -196,15 +196,15 @@ export default {
 
     let url = `/v2/nodes/${id}/nodes?where_type=-1&sort=name&fields=properties&page=1&limit=100`;
 
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
     return apiClient
       .get(url, {
-        headers: {
-          OTCSTicket: ticket,
-        },
+        // headers: {
+        //   OTCSTicket: ticket,
+        // },
       })
       .then((resp) => {
-        updateOTCSTicket(resp.headers.otcsticket);
+        // updateOTCSTicket(resp.headers.otcsticket);
         let folderInfoList = [];
 
         // let folders =
@@ -488,10 +488,10 @@ export default {
   },
   getPermissions(id) {
     let url = `v2/nodes/${id}/permissions/effective/${cookies.get("OTUID")}`;
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
 
     var myHeaders = new Headers();
-    myHeaders.append("OTCSTicket", ticket);
+    // myHeaders.append("OTCSTicket", ticket);
 
     var requestOptions = {
       method: "GET",

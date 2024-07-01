@@ -4,7 +4,7 @@ import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import { GoChevronRight, GoChevronDown } from "react-icons/go";
 import PropTypes from "prop-types";
 import FolderTreeItem from "./FolderTreeItem";
-import AGOApi, { getOTCSTicket } from "../../api/AGOApi";
+import AGOApi from "../../api/AGOApi";
 import _, { result } from "lodash";
 import { TreeView } from "@mui/x-tree-view/TreeView";
 // import { withRouter } from "react-router-dom";
@@ -611,7 +611,7 @@ function FolderTreeView(props) {
     }
   }, [props.favoriteFolders]);
   const fetchChildrenFromAPI = async (nodeId) => {
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
     const res = await AGOApi.getFolderChildrens(nodeId);
     return res.data;
   };
@@ -794,10 +794,10 @@ function FolderTreeView(props) {
     const cookie = new Cookies();
     const userNodeId = cookie.get("OTUID");
     try {
-      const ticket = getOTCSTicket();
+      // const ticket = getOTCSTicket();
       const res = await axios.get(
         `${config.OTCS_API_URL}/v2/members/accessed`,
-        { headers: { otcsticket: ticket } }
+        { headers: { Authorization: `Bearer ${cookies.get("otsession")}` } }
       );
 
       const results = res.data.results.map((result) => {

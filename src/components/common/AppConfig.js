@@ -63,7 +63,9 @@ function Config() {
       REACT_APP_HOME_URL: `${window.location.origin}/otcs/cs.exe/app`, //`${otcsBaseURL}/app`,
       REACT_APP_VIEW_PROPERTIES_URL: process.env.REACT_APP_VIEW_PROPERTIES_URL, //`${otcsBaseURL}/app/nodes/`,
       REACT_APP_PERMMANAGER_URL: process.env.REACT_APP_PERMMANAGER_URL, //`${baseUrl}/OTCSPermManagerAPI/api/v1`,
-      REACT_APP_OAUTH_URL: `${window.location.origin}:8080/otdsws/login?response_type=token&client_id=emailbrowser&redirect_uri=http%3A%2F%2Fbca-erms%2Fotcsemails%2Fredirect&State=None`, //`${otdsBaseURL}/otdsws/login?response_type=token&client_id=emailbrowser&redirect_uri=${encodeURI(appRedirectURL)}&state=none`,
+      REACT_APP_OAUTH_URL: `${otdsBaseURL}/otdsws/login?response_type=token&client_id=emailbrowser&redirect_uri=${encodeURI(
+        appRedirectURL
+      )}&state=none`, //`${otdsBaseURL}/otdsws/login?response_type=token&client_id=emailbrowser&redirect_uri=${encodeURI(appRedirectURL)}&state=none`,
       REACT_APP_REDIRECT_URL: process.env.REACT_APP_REDIRECT_URL, //appRedirectURL,
       REACT_APP_OTDSINTEGRATION_REDIRECT:
         process.env.REACT_APP_OTDSINTEGRATION_REDIRECT, //`${otcsBaseURL}?func=otdsintegration.redirect&NextURL=`,

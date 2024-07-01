@@ -25,7 +25,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import { set, isObject } from "lodash";
 import moment from "moment";
 import Axios from "axios";
-import AGOApi, { getOTCSTicket } from "../../api/AGOApi";
+import AGOApi from "../../api/AGOApi";
 import { jwtDecode } from "jwt-decode";
 import AutocompleteSearch from "./AutocompleteSearch";
 import { makeStyles } from "@material-ui/core/styles";
@@ -181,7 +181,8 @@ function MainSection(props) {
   const emailAttachmentTableHeaders = ["Type", "Name", "Size", "Functions"];
   const [openAttachmentNodeIDs, setOpenAttachmentNodeIDs] = useState({});
   const [userPhoto, setUserPhoto] = useState(null);
-  const ticket = getOTCSTicket();
+  // const ticket = getOTCSTicket();
+  const ticket = cookies.get("otsession");
   let userNodeId = cookies.get("OTUID");
   if (userNodeId == -1) {
     userNodeId = 1000;
@@ -232,7 +233,6 @@ function MainSection(props) {
     };
     getShowSearchListFolderLocation();
   }, []);
-
   useEffect(() => {
     const getUserInfos = async () => {
       try {
@@ -268,7 +268,10 @@ function MainSection(props) {
         try {
           const res = await axios.get(
             `${config.OTCS_API_URL}/v1/members/${userNodeId}/photo`,
-            { headers: { otcsticket: ticket }, responseType: "blob" }
+            {
+              headers: { Authorization: `Bearer ${cookies.get("otsession")}` },
+              responseType: "blob",
+            }
           );
 
           const data = res.data;
@@ -328,12 +331,12 @@ function MainSection(props) {
   );
 
   const getEmailAttachments = async (nodeId) => {
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
     const username = cookies.get("uid");
     try {
       const res = await axios.get(
         `${config.REACT_APP_API_URL}/attachments?id=${nodeId}&username=${username}`,
-        { headers: { otcsticket: ticket } }
+        { headers: { Authorization: `Bearer ${cookies.get("otsession")}` } }
       );
       // if (res.status === 200) {
       //   setEmailAttachments(res.data);
@@ -350,11 +353,11 @@ function MainSection(props) {
   };
 
   const getEmailName = async (nodeId) => {
-    const ticket = getOTCSTicket();
+    // const ticket = getOTCSTicket();
     try {
       const res = await axios.get(
         `${config.REACT_APP_API_URL_VERSION_TWO}/nodes/${nodeId}`,
-        { headers: { otcsticket: ticket } }
+        { headers: { Authorization: `Bearer ${cookies.get("otsession")}` } }
       );
       if (res.status === 200) {
         setEmailName(res.data.results.data.properties.name);
@@ -1152,7 +1155,7 @@ function MainSection(props) {
 
   useEffect(() => {
     try {
-      const ticket = getOTCSTicket();
+      // const ticket = getOTCSTicket();
       const getFavoritesFolder = async () => {
         const res = await axios
           .create({
@@ -1202,7 +1205,7 @@ function MainSection(props) {
                 alt=""
                 onClick={() => homeClick()}
               /> */}
-              <div style={{ width: "50px" }}>
+              <div style={{ width: "100px" }}>
                 {screenWidth < 912 ? null : (
                   <img src={config.BCA_ICON_URL} alt="bca-icon" />
                 )}
@@ -1938,7 +1941,7 @@ function MainSection(props) {
                       ? isObject(searchLocation1) && searchLocation1.NodeID
                       : searchEmails && defualtFolder.length > 0
                       ? defualtFolder[0]["NodeID"]
-                      : searchArchive && defualtFolder.length > 0
+                      : searchArchive && defualtFolder.length > 1
                       ? defualtFolder[1]["NodeID"]
                       : "2000"
                   }
@@ -1946,7 +1949,7 @@ function MainSection(props) {
                     isSearchLocationFilled()
                       ? isObject(searchLocation2) && searchLocation2.NodeID
                       : searchArchive &&
-                        defualtFolder.length > 0 &&
+                        defualtFolder.length > 1 &&
                         defualtFolder[1]["NodeID"]
                   }
                   folderNodeID3={
@@ -1973,7 +1976,7 @@ function MainSection(props) {
                     ""
                   )} // exclude special characters
                   generalSearchInArchive={
-                    defualtFolder.length > 0 ? defualtFolder[1]["NodeID"] : ""
+                    defualtFolder.length > 1 ? defualtFolder[1]["NodeID"] : ""
                   }
                   setPreviewPaneHidden={setPannelHidden}
                 />
